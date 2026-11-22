@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+chroma_syllabus_db/
+part1_best_model.joblib
+rag_answer.mp3

@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import PyPDFLoader
@@ -9,6 +10,9 @@ from langchain_chroma import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 
 load_dotenv()
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 PDF_PATH = "CPSC 254_SYL.pdf"
 PERSIST_DIR = "./chroma_syllabus_db"
@@ -20,7 +24,7 @@ EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 TOP_K = 4
 
 DEFAULT_MODEL = os.environ.get("NAUTILUS_MODEL", "gpt-oss")
-NAUTILUS_BASE_URL = os.environ.get("NAUTILUS_BASE_URL", "[https://ellm.nrp-nautilus.io/v1](https://ellm.nrp-nautilus.io/v1)")
+NAUTILUS_BASE_URL = os.environ.get("NAUTILUS_BASE_URL", "https://ellm.nrp-nautilus.io/v1")
 
 RAG_PROMPT = ChatPromptTemplate.from_template(
     """You are a helpful course assistant for CPSC 254.
