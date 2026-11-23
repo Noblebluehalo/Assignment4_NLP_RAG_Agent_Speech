@@ -49,7 +49,7 @@ def load_ag_news_test():
         return test_texts, test_labels
     except Exception:
         from datasets import load_dataset
-        ds = load_dataset("ag_news", split="test")
+        ds = load_dataset("fancyzhx/ag_news", split="test")
         cols = ds.column_names
         if "title" in cols and "description" in cols:
             texts = [f"{t} {d}".strip() for t, d in zip(ds["title"], ds["description"])]
