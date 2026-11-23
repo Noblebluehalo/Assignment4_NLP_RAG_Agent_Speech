@@ -1,6 +1,7 @@
 import os
 import sys
 import argparse
+import shutil
 import numpy as np
 import whisper
 from rag import get_or_build_vectorstore, get_llm, ask_syllabus
@@ -9,6 +10,11 @@ from rag import get_or_build_vectorstore, get_llm, ask_syllabus
 def transcribe_from_file(audio_path: str, model_size: str = "base") -> str:
     if not os.path.exists(audio_path):
         raise FileNotFoundError(f"Audio file '{audio_path}' not found.")
+    if shutil.which("ffmpeg") is None:
+        raise RuntimeError(
+            "FFmpeg is required to transcribe audio files but was not found on PATH. "
+            "Install FFmpeg, restart PowerShell, and try again."
+        )
     print(f"Loading Whisper '{model_size}' model and transcribing '{audio_path}'...")
     model = whisper.load_model(model_size)
     result = model.transcribe(audio_path, fp16=False, language="en")

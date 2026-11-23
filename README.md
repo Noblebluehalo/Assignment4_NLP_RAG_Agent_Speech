@@ -17,6 +17,9 @@ This repository contains the six required Python source files for CPSC 254 Assig
   python -m pip install python-dotenv langchain langchain-openai langchain-community langchain-text-splitters langchain-huggingface langchain-chroma chromadb pypdf sentence-transformers
   python -m pip install openai-whisper sounddevice gTTS pyttsx3
   ```
+  **Windows:** Whisper also requires the FFmpeg command-line tool to read audio files.
+  Install it with `winget install --id Gyan.FFmpeg.Shared --exact`, then restart PowerShell.
+  Verify it is available with `ffmpeg -version`.
   *(Note: `topic_classifier.py` automatically falls back to Hugging Face `datasets` when `torchtext.datasets.AG_NEWS` is unavailable or unsupported in the installed `torchtext` version.)*
 - **Configuration (`.env` file in project folder — do NOT submit):**
   ```env
