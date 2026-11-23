@@ -54,10 +54,11 @@ This repository contains the six required Python source files for CPSC 254 Assig
    python tts_rag.py --question "What are the prerequisites for CPSC 254?"
    python stt_rag.py
    ```
-   If microphone input is unavailable or silent, generate a test audio file and pass `--audio`:
+   If microphone input is unavailable or silent, generate a test audio file and pass `--audio`.
+   gTTS saves MP3 audio, so use an `.mp3` filename:
    ```bash
-   python -c "from gtts import gTTS; gTTS('What is the late submission policy for CPSC 254?').save('sample_question.wav')"
-   python stt_rag.py --audio sample_question.wav
+   python -c "from gtts import gTTS; gTTS('What is the late submission policy for CPSC 254?').save('sample_question.mp3')"
+   python stt_rag.py --audio sample_question.mp3
    ```
 
 ## Submission Notes
