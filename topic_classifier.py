@@ -36,7 +36,7 @@ def load_ag_news():
     except Exception as e:
         print(f"torchtext unavailable or unsupported ({e}); falling back to Hugging Face datasets...")
         from datasets import load_dataset
-        ds = load_dataset("ag_news")
+        ds = load_dataset("fancyzhx/ag_news")
         # HF ag_news has 'text' (title + description) and 'label' in 0..3
         # Check if separate 'title'/'description' columns exist just in case
         def format_split(split_ds):
@@ -50,7 +50,7 @@ def load_ag_news():
 
         train_texts, train_labels = format_split(ds["train"])
         test_texts, test_labels = format_split(ds["test"])
-        print("Loaded AG News via Hugging Face 'ag_news' dataset")
+        print("Loaded AG News via Hugging Face 'fancyzhx/ag_news' dataset")
         return train_texts, train_labels, test_texts, test_labels
 
 
